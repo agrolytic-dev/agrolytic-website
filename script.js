@@ -56,15 +56,17 @@ function handleAccess() {
         button.textContent = 'Redirecting...';
         button.disabled = true;
         
+        // Get repository URL from content
+        const repositoryUrl = window.siteContent?.access?.repositoryUrl || 'https://github.com/your-username/your-repo';
+        
         // Simulate brief loading then redirect
         setTimeout(() => {
-            // Replace with your actual GitHub repository URL
-            window.open('https://github.com/your-username/your-repo', '_blank');
+            window.open(repositoryUrl, '_blank');
             
             // Reset button
             button.textContent = originalText;
             button.disabled = false;
-        }, 1000);
+        }, window.siteContent?.config?.loadingDelay || 1000);
         
         // Track access attempt (you can add analytics here later)
         console.log('Repository access granted at:', new Date().toISOString());
