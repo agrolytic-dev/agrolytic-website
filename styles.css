@@ -22,7 +22,7 @@
 /* Light theme variables */
 [data-theme="light"] {
     --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
+    --bg-secondary: #eef1ff;
     --bg-tertiary: #f1f5f9;
     --text-primary: #0f172a;
     --text-secondary: #1e293b;
@@ -422,10 +422,10 @@ body {
     margin-top: 0.5rem;
 }
 
-/* In Numbers Section */
+/* In Numbers Section - FIXED to use CSS variables */
 .in-numbers {
     padding: 100px 0;
-    background: #0f172a;
+    background: var(--bg-primary);
 }
 
 .numbers-grid {
@@ -436,11 +436,11 @@ body {
 }
 
 .number-card {
-    background: #1e293b;
+    background: var(--bg-secondary);
     padding: 3rem 2rem;
     border-radius: 20px;
     text-align: center;
-    border: 1px solid #334155;
+    border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -453,7 +453,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -464,13 +464,13 @@ body {
 
 .number-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 40px var(--shadow-color);
 }
 
 .number-display {
     font-size: 4rem;
     font-weight: 800;
-    color: #60a5fa;
+    color: var(--accent-primary);
     margin-bottom: 1rem;
     line-height: 1;
 }
@@ -478,18 +478,20 @@ body {
 .number-label {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #f1f5f9;
+    color: var(--text-primary);
     margin-bottom: 1rem;
 }
 
 .number-description {
     font-size: 0.95rem;
-    color: #94a3b8;
+    color: var(--text-muted);
     line-height: 1.6;
 }
+
+/* Access Section - FIXED to use CSS variables */
 .access {
     padding: 100px 0;
-    background: #0f172a;
+    background: var(--bg-primary);
 }
 
 .access-container {
@@ -498,8 +500,8 @@ body {
 }
 
 .consent-box {
-    background: #1e293b;
-    border: 2px solid #475569;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
     border-radius: 15px;
     padding: 2rem;
 }
@@ -508,12 +510,12 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #f1f5f9;
+    color: var(--text-primary);
 }
 
 .consent-text {
-    background: #334155;
-    border: 1px solid #64748b;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 1.5rem;
     max-height: 300px;
@@ -521,7 +523,7 @@ body {
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
     line-height: 1.6;
-    color: #e2e8f0;
+    color: var(--text-secondary);
 }
 
 .consent-text ul {
