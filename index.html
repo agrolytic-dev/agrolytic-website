@@ -15,12 +15,25 @@
             <div class="nav-logo">
                 <h2>[Loading...]</h2>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#hero">[Loading...]</a></li>
-                <li><a href="#trust">[Loading...]</a></li>
-                <li><a href="#access">[Loading...]</a></li>
-                <li><a href="#contact">[Loading...]</a></li>
-            </ul>
+            <div class="nav-center">
+                <ul class="nav-menu">
+                    <li><a href="#hero">[Loading...]</a></li>
+                    <li><a href="#access">[Loading...]</a></li>
+                    <li><a href="#certifications">[Loading...]</a></li>
+                    <li><a href="#contact">[Loading...]</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <!-- Theme Toggle -->
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-switch" class="theme-switch">
+                    <label for="theme-switch" class="theme-switch-label">
+                        <span class="theme-switch-slider"></span>
+                        <span class="theme-icon sun-icon">☀️</span>
+                        <span class="theme-icon moon-icon">🌙</span>
+                    </label>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -44,13 +57,42 @@
                         <span>[Loading...]</span>
                     </div>
                 </div>
-                <button class="cta-button" onclick="scrollToSection('trust')">[Loading...]</button>
+                <button class="cta-button" onclick="scrollToSection('access')">[Loading...]</button>
             </div>
         </div>
     </section>
 
-    <!-- Trust & Credentials Section -->
-    <section id="trust" class="trust">
+    <!-- Access Section (moved up) -->
+    <section id="access" class="access">
+        <div class="container">
+            <h2 class="section-title">[Loading...]</h2>
+            <p class="section-subtitle">[Loading...]</p>
+            
+            <div class="access-container">
+                <div class="consent-box">
+                    <h3>[Loading...]</h3>
+                    <div class="consent-text" id="consentText">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+                    
+                    <div class="consent-actions">
+                        <label class="consent-checkbox">
+                            <input type="checkbox" id="consentCheck">
+                            <span class="checkmark"></span>
+                            <span>[Loading...]</span>
+                        </label>
+                        
+                        <button class="access-button" id="accessButton" disabled onclick="handleAccess()">
+                            [Loading...]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Credentials Section (renamed and moved) -->
+    <section id="certifications" class="certifications">
         <div class="container">
             <h2 class="section-title">[Loading...]</h2>
             <p class="section-subtitle">[Loading...]</p>
@@ -83,31 +125,14 @@
         </div>
     </section>
 
-    <!-- Access Section -->
-    <section id="access" class="access">
+    <!-- In Numbers Section (new) -->
+    <section id="inNumbers" class="in-numbers">
         <div class="container">
             <h2 class="section-title">[Loading...]</h2>
             <p class="section-subtitle">[Loading...]</p>
             
-            <div class="access-container">
-                <div class="consent-box">
-                    <h3>[Loading...]</h3>
-                    <div class="consent-text" id="consentText">
-                        <!-- Content will be loaded dynamically -->
-                    </div>
-                    
-                    <div class="consent-actions">
-                        <label class="consent-checkbox">
-                            <input type="checkbox" id="consentCheck">
-                            <span class="checkmark"></span>
-                            <span>[Loading...]</span>
-                        </label>
-                        
-                        <button class="access-button" id="accessButton" disabled onclick="handleAccess()">
-                            [Loading...]
-                        </button>
-                    </div>
-                </div>
+            <div class="numbers-grid">
+                <!-- Content will be loaded dynamically -->
             </div>
         </div>
     </section>

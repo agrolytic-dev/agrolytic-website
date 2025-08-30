@@ -1,4 +1,4 @@
-// Content Loader - Dynamically loads content from content.js into HTML
+// Load Certifications// Content Loader - Dynamically loads content from content.js into HTML
 // This runs when the page loads to populate all text content
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,17 +15,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load Hero Section
     loadHeroSection(content.hero);
     
-    // Load Trust Section
-    loadTrustSection(content.trust);
-    
-    // Load Access Section  
+    // Load Access Section (now first)
     loadAccessSection(content.access);
+    
+    // Load Certifications Section (renamed from Trust)
+    loadCertificationsSection(content.certifications);
+    
+    // Load In Numbers Section (new)
+    loadInNumbersSection(content.inNumbers);
     
     // Load Contact Section
     loadContactSection(content.contact);
     
     // Load Footer
     loadFooter(content.footer);
+    
+    // Initialize theme toggle
+    initializeThemeToggle();
     
     console.log('✅ All content loaded successfully');
 });
@@ -37,7 +43,7 @@ function loadNavigation(nav, companyName) {
     
     // Navigation links
     const navLinks = document.querySelectorAll('.nav-menu a');
-    const navItems = [nav.home, nav.credentials, nav.access, nav.contact];
+    const navItems = [nav.home, nav.access, nav.certifications, nav.contact];
     
     navLinks.forEach((link, index) => {
         if (navItems[index]) {
@@ -68,13 +74,13 @@ function loadHeroSection(hero) {
     });
 }
 
-function loadTrustSection(trust) {
+function loadCertificationsSection(certifications) {
     // Section title and subtitle
-    const trustTitle = document.querySelector('#trust .section-title');
-    const trustSubtitle = document.querySelector('#trust .section-subtitle');
+    const certificationsTitle = document.querySelector('#certifications .section-title');
+    const certificationsSubtitle = document.querySelector('#certifications .section-subtitle');
     
-    if (trustTitle) trustTitle.textContent = trust.title;
-    if (trustSubtitle) trustSubtitle.textContent = trust.subtitle;
+    if (certificationsTitle) certificationsTitle.textContent = certifications.title;
+    if (certificationsSubtitle) certificationsSubtitle.textContent = certifications.subtitle;
     
     // Credential categories
     const categories = document.querySelectorAll('.credential-category');
@@ -84,10 +90,10 @@ function loadTrustSection(trust) {
         const title = categories[0].querySelector('h3');
         const certList = categories[0].querySelector('.cert-list');
         
-        if (title) title.textContent = trust.teamCertifications.title;
+        if (title) title.textContent = certifications.teamCertifications.title;
         if (certList) {
             certList.innerHTML = '';
-            trust.teamCertifications.items.forEach(cert => {
+            certifications.teamCertifications.items.forEach(cert => {
                 const certItem = createCertItem(cert.badge, cert.title);
                 certList.appendChild(certItem);
             });
@@ -99,10 +105,10 @@ function loadTrustSection(trust) {
         const title = categories[1].querySelector('h3');
         const certList = categories[1].querySelector('.cert-list');
         
-        if (title) title.textContent = trust.companyStandards.title;
+        if (title) title.textContent = certifications.companyStandards.title;
         if (certList) {
             certList.innerHTML = '';
-            trust.companyStandards.items.forEach(cert => {
+            certifications.companyStandards.items.forEach(cert => {
                 const certItem = createCertItem(cert.badge, cert.title);
                 certList.appendChild(certItem);
             });
@@ -114,14 +120,33 @@ function loadTrustSection(trust) {
         const title = categories[2].querySelector('h3');
         const statsGrid = categories[2].querySelector('.stats-grid');
         
-        if (title) title.textContent = trust.stats.title;
+        if (title) title.textContent = certifications.stats.title;
         if (statsGrid) {
             statsGrid.innerHTML = '';
-            trust.stats.items.forEach(stat => {
+            certifications.stats.items.forEach(stat => {
                 const statItem = createStatItem(stat.number, stat.label);
                 statsGrid.appendChild(statItem);
             });
         }
+    }
+}
+
+function loadInNumbersSection(inNumbers) {
+    // Section title and subtitle
+    const inNumbersTitle = document.querySelector('#inNumbers .section-title');
+    const inNumbersSubtitle = document.querySelector('#inNumbers .section-subtitle');
+    
+    if (inNumbersTitle) inNumbersTitle.textContent = inNumbers.title;
+    if (inNumbersSubtitle) inNumbersSubtitle.textContent = inNumbers.subtitle;
+    
+    // Numbers grid
+    const numbersGrid = document.querySelector('.numbers-grid');
+    if (numbersGrid) {
+        numbersGrid.innerHTML = '';
+        inNumbers.stats.forEach(stat => {
+            const numberCard = createNumberCard(stat.number, stat.label, stat.description);
+            numbersGrid.appendChild(numberCard);
+        });
     }
 }
 
@@ -252,4 +277,38 @@ function createStatItem(number, label) {
         <div class="stat-label">${label}</div>
     `;
     return statItem;
+}
+
+function createNumberCard(number, label, description) {
+    const numberCard = document.createElement('div');
+    numberCard.className = 'number-card';
+    numberCard.innerHTML = `
+        <div class="number-display">${number}</div>
+        <div class="number-label">${label}</div>
+        <div class="number-description">${description}</div>
+    `;
+    return numberCard;
+}
+
+function initializeThemeToggle() {
+    const themeSwitch = document.getElementById('theme-switch');
+    const body = document.body;
+    
+    // Check for saved theme preference or default to dark
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    
+    if (currentTheme === 'light') {
+        body.setAttribute('data-theme', 'light');
+        themeSwitch.checked = true;
+    }
+    
+    themeSwitch.addEventListener('change', function() {
+        if (this.checked) {
+            body.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
 }

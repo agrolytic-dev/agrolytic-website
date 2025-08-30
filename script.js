@@ -17,10 +17,10 @@ function scrollToSection(sectionId) {
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(15, 23, 42, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+        navbar.style.opacity = '0.98';
+        navbar.style.boxShadow = '0 2px 20px var(--shadow-color)';
     } else {
-        navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+        navbar.style.opacity = '0.95';
         navbar.style.boxShadow = 'none';
     }
 });
@@ -35,13 +35,13 @@ document.addEventListener('DOMContentLoaded', function() {
             accessButton.disabled = !this.checked;
             
             if (this.checked) {
-                accessButton.style.background = 'linear-gradient(135deg, #60a5fa, #3b82f6)';
+                accessButton.style.background = `linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))`;
                 accessButton.style.cursor = 'pointer';
-                accessButton.style.color = '#0f172a';
+                accessButton.style.color = 'var(--bg-primary)';
             } else {
-                accessButton.style.background = '#64748b';
+                accessButton.style.background = 'var(--text-muted)';
                 accessButton.style.cursor = 'not-allowed';
-                accessButton.style.color = '#94a3b8';
+                accessButton.style.color = 'var(--text-muted)';
             }
         });
     }

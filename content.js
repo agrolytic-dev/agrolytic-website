@@ -12,8 +12,8 @@ const siteContent = {
     // Navigation Menu
     navigation: {
         home: "Home",
-        credentials: "Credentials", 
         access: "Access",
+        certifications: "Certifications", 
         contact: "Contact"
     },
 
@@ -29,46 +29,7 @@ const siteContent = {
         ctaButton: "Explore Our Expertise"
     },
 
-    // Trust & Credentials Section
-    trust: {
-        title: "Trust & Credentials",
-        subtitle: "Our certified expertise and industry partnerships ensure the highest standards of quality and security.",
-        
-        // Team Certifications
-        teamCertifications: {
-            title: "Team Certifications",
-            items: [
-                { badge: "AWS", title: "AWS Certified Solutions Architect" },
-                { badge: "MS", title: "Microsoft Azure Expert" },
-                { badge: "GCP", title: "Google Cloud Professional" },
-                { badge: "SEC", title: "Certified Information Security Manager" }
-            ]
-        },
-
-        // Company Standards
-        companyStandards: {
-            title: "Company Standards",
-            items: [
-                { badge: "ISO", title: "ISO 27001 Information Security" },
-                { badge: "SOC", title: "SOC 2 Type II Compliance" },
-                { badge: "PCI", title: "PCI DSS Compliant" },
-                { badge: "GDPR", title: "GDPR Compliant Operations" }
-            ]
-        },
-
-        // Statistics
-        stats: {
-            title: "Experience & Expertise",
-            items: [
-                { number: "10+", label: "Years Experience" },
-                { number: "500+", label: "Projects Delivered" },
-                { number: "50+", label: "Enterprise Clients" },
-                { number: "99.9%", label: "Uptime SLA" }
-            ]
-        }
-    },
-
-    // Access Section
+    // Access Section (moved up)
     access: {
         title: "Access Our Repository",
         subtitle: "Review our open-source contributions and technical implementations.",
@@ -102,6 +63,67 @@ const siteContent = {
         repositoryUrl: "https://github.com/your-username/your-repo"
     },
 
+    // Certifications & Credentials Section (renamed and restructured)
+    certifications: {
+        title: "Certifications & Credentials",
+        subtitle: "Our certified expertise and industry partnerships ensure the highest standards of quality and security.",
+        
+        // Team Certifications
+        teamCertifications: {
+            title: "Team Certifications",
+            items: [
+                { badge: "AWS", title: "AWS Certified Solutions Architect" },
+                { badge: "MS", title: "Microsoft Azure Expert" },
+                { badge: "GCP", title: "Google Cloud Professional" },
+                { badge: "SEC", title: "Certified Information Security Manager" }
+            ]
+        },
+
+        // Company Standards
+        companyStandards: {
+            title: "Company Standards",
+            items: [
+                { badge: "ISO", title: "ISO 27001 Information Security" },
+                { badge: "SOC", title: "SOC 2 Type II Compliance" },
+                { badge: "PCI", title: "PCI DSS Compliant" },
+                { badge: "GDPR", title: "GDPR Compliant Operations" }
+            ]
+        },
+
+        // Statistics
+        stats: {
+            title: "Experience & Expertise",
+            items: [
+                { number: "99.9%", label: "Uptime SLA" }
+            ]
+        }
+    },
+
+    // In Numbers Section (new)
+    inNumbers: {
+        title: "In Numbers",
+        subtitle: "Our track record speaks for itself with measurable results and proven expertise.",
+        stats: [
+            { 
+                number: "10+", 
+                label: "Years of Experience",
+                description: "Decade of proven expertise in B2B IT solutions"
+            },
+            { 
+                number: "500+", 
+                label: "Number of Projects",
+                description: "Successfully delivered projects across various industries"
+            },
+            { 
+                number: "50+", 
+                label: "Companies that Trusted our Services",
+                description: "Enterprise clients who rely on our solutions"
+            }
+        ]
+    },
+
+    // Access Section (removed from here, moved above)
+    // Access Section (content moved above)
     // Contact Section
     contact: {
         title: "Contact Us",
