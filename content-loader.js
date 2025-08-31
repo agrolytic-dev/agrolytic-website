@@ -21,9 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load Certifications Section (renamed from Trust)
     loadCertificationsSection(content.certifications);
     
-    // Load In Numbers Section (new)
-    loadInNumbersSection(content.inNumbers);
-    
     // Load Contact Section
     loadContactSection(content.contact);
     
@@ -61,17 +58,16 @@ function loadHeroSection(hero) {
     if (heroTitle) heroTitle.textContent = hero.title;
     if (heroSubtitle) heroSubtitle.textContent = hero.subtitle;
     if (ctaButton) ctaButton.textContent = hero.ctaButton;
-    
-    // Hero features
-    const features = document.querySelectorAll('.feature');
-    features.forEach((feature, index) => {
-        if (hero.features[index]) {
-            const icon = feature.querySelector('.feature-icon');
-            const text = feature.querySelector('span:last-child');
-            if (icon) icon.textContent = hero.features[index].icon;
-            if (text) text.textContent = hero.features[index].text;
-        }
-    });
+
+    // Hero In Numbers (integrated into hero)
+    const heroNumbersGrid = document.querySelector('.hero-numbers-grid');
+    if (heroNumbersGrid && hero.inNumbers) {
+        heroNumbersGrid.innerHTML = '';
+        hero.inNumbers.stats.forEach(stat => {
+            const heroNumberCard = createHeroNumberCard(stat.number, stat.label);
+            heroNumbersGrid.appendChild(heroNumberCard);
+        });
+    }
 }
 
 function loadCertificationsSection(certifications) {
@@ -129,25 +125,27 @@ function loadCertificationsSection(certifications) {
             });
         }
     }
+    
+    // Certification Logos (new section)
+    const logosTitle = document.querySelector('.logos-title');
+    const certificationLogos = document.querySelector('.certification-logos');
+    
+    if (logosTitle && certifications.certificationLogos) {
+        logosTitle.textContent = certifications.certificationLogos.title;
+    }
+    
+    if (certificationLogos && certifications.certificationLogos) {
+        certificationLogos.innerHTML = '';
+        certifications.certificationLogos.logos.forEach(logo => {
+            const logoElement = createCertificationLogo(logo);
+            certificationLogos.appendChild(logoElement);
+        });
+    }
 }
 
 function loadInNumbersSection(inNumbers) {
-    // Section title and subtitle
-    const inNumbersTitle = document.querySelector('#inNumbers .section-title');
-    const inNumbersSubtitle = document.querySelector('#inNumbers .section-subtitle');
-    
-    if (inNumbersTitle) inNumbersTitle.textContent = inNumbers.title;
-    if (inNumbersSubtitle) inNumbersSubtitle.textContent = inNumbers.subtitle;
-    
-    // Numbers grid
-    const numbersGrid = document.querySelector('.numbers-grid');
-    if (numbersGrid) {
-        numbersGrid.innerHTML = '';
-        inNumbers.stats.forEach(stat => {
-            const numberCard = createNumberCard(stat.number, stat.label, stat.description);
-            numbersGrid.appendChild(numberCard);
-        });
-    }
+    // This function is no longer used as In Numbers moved to Hero
+    console.log('In Numbers section moved to Hero section');
 }
 
 function loadAccessSection(access) {
@@ -273,8 +271,11 @@ function createStatItem(number, label) {
     const statItem = document.createElement('div');
     statItem.className = 'stat-item';
     statItem.innerHTML = `
-        <div class="stat-number">${number}</div>
-        <div class="stat-label">${label}</div>
+        <div class="stat-badge">SLA</div>
+        <div class="stat-content">
+            <div class="stat-number">${number}</div>
+            <div class="stat-label">${label}</div>
+        </div>
     `;
     return statItem;
 }
@@ -288,6 +289,45 @@ function createNumberCard(number, label, description) {
         <div class="number-description">${description}</div>
     `;
     return numberCard;
+}
+
+function createHeroNumberCard(number, label) {
+    const heroNumberCard = document.createElement('div');
+    heroNumberCard.className = 'hero-number-card';
+    heroNumberCard.innerHTML = `
+        <div class="hero-number-display">${number}</div>
+        <div class="hero-number-label">${label}</div>
+    `;
+    return heroNumberCard;
+}
+
+function createCertificationLogo(logo) {
+    const logoElement = document.createElement('div');
+    logoElement.className = 'cert-logo';
+    
+    // Check if image exists, otherwise show placeholder
+    const img = new Image();
+    img.onload = function() {
+        logoElement.innerHTML = `
+            <img src="${logo.imageUrl}" alt="${logo.altText}" class="cert-logo-image">
+            <div class="cert-logo-name">${logo.name}</div>
+        `;
+    };
+    img.onerror = function() {
+        logoElement.innerHTML = `
+            <div class="cert-logo-placeholder">🏆</div>
+            <div class="cert-logo-name">${logo.name}</div>
+        `;
+    };
+    img.src = logo.imageUrl;
+    
+    // Set placeholder initially
+    logoElement.innerHTML = `
+        <div class="cert-logo-placeholder">🏆</div>
+        <div class="cert-logo-name">${logo.name}</div>
+    `;
+    
+    return logoElement;
 }
 
 function initializeThemeToggle() {

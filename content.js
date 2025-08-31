@@ -26,7 +26,25 @@ const siteContent = {
             { icon: "🔐", text: "Enterprise Security" },
             { icon: "⚡", text: "High Performance" }
         ],
-        ctaButton: "Explore Our Expertise"
+        ctaButton: "Explore Our Expertise",
+        
+        // In Numbers data (moved from separate section)
+        inNumbers: {
+            stats: [
+                { 
+                    number: "10+", 
+                    label: "Years of Experience"
+                },
+                { 
+                    number: "500+", 
+                    label: "Projects Delivered"
+                },
+                { 
+                    number: "50+", 
+                    label: "Trusted Companies"
+                }
+            ]
+        }
     },
 
     // Access Section (moved up)
@@ -90,37 +108,48 @@ const siteContent = {
             ]
         },
 
-        // Statistics
+        // Statistics (reduced to just uptime)
         stats: {
-            title: "Experience & Expertise",
+            title: "Performance",
             items: [
                 { number: "99.9%", label: "Uptime SLA" }
+            ]
+        },
+
+        // Certification Logos (new section)
+        certificationLogos: {
+            title: "Industry Certifications",
+            logos: [
+                {
+                    name: "AWS Partner",
+                    imageUrl: "assets/images/aws-certification-logo1.png", // You'll replace with your actual logos
+                    altText: "AWS Certified Partner"
+                },
+                {
+                    name: "Microsoft Partner", 
+                    imageUrl: "assets/images/aws-certification-logo2.png",
+                    altText: "Microsoft Certified Partner"
+                },
+                {
+                    name: "Google Cloud",
+                    imageUrl: "assets/images/aws-certification-logo3.png", 
+                    altText: "Google Cloud Partner"
+                },
+                {
+                    name: "ISO 27001",
+                    imageUrl: "assets/images/aws-certification-logo4.png",
+                    altText: "ISO 27001 Certified"
+                },
+                {
+                    name: "SOC 2", 
+                    imageUrl: "assets/images/aws-certification-logo5.png",
+                    altText: "SOC 2 Compliant"
+                }
             ]
         }
     },
 
-    // In Numbers Section (new)
-    inNumbers: {
-        title: "In Numbers",
-        subtitle: "Our track record speaks for itself with measurable results and proven expertise.",
-        stats: [
-            { 
-                number: "10+", 
-                label: "Years of Experience",
-                description: "Decade of proven expertise in B2B IT solutions"
-            },
-            { 
-                number: "500+", 
-                label: "Number of Projects",
-                description: "Successfully delivered projects across various industries"
-            },
-            { 
-                number: "50+", 
-                label: "Companies that Trusted our Services",
-                description: "Enterprise clients who rely on our solutions"
-            }
-        ]
-    },
+    // In Numbers Section (removed - moved to hero)
 
     // Access Section (removed from here, moved above)
     // Access Section (content moved above)
